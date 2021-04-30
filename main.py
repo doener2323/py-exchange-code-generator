@@ -8,7 +8,7 @@
 # PYTHON EXCHANGE CODE GENERATOR
 ##################################
 
-import requests, json, asyncio
+import requests, json, asyncio, time
 
 class exchangeCode:
 
@@ -73,6 +73,7 @@ class exchangeCode:
                     pass
                 elif requestJson["errorCode"] == "errors.com.epicgames.not_found":
                     self.log("-", "Device Code not found, time probably ran out or you did not authorize.")
+                    time.sleep(5)
                     return requestJson
                 else:
                     await asyncio.sleep(3)
@@ -99,6 +100,7 @@ class exchangeCode:
                 self.log("+", "Generated access token & refresh token.")
                 self.log("+", f"Access Token: {awaitAuthorization['access_token']}")
                 self.log("+", f"Refresh Token: {awaitAuthorization['refresh_token']}")
+                time.sleep(5)
                 exchangeCode = self.loop.run_until_complete(self.generateExchangeCode(session=self.session, accessToken=awaitAuthorization["access_token"]))
         except:
             self.log("-", "Exiting.")
@@ -106,8 +108,10 @@ class exchangeCode:
         if exchangeCode["code"]:
             self.log("+", "Generated exchange code.")
             self.log("+", f"Exchange Code: {exchangeCode['code']}")
+            time.sleep(30)
         else:
             self.log("-", "Something went wrong while generating exchange code.")
             print(exchangeCode)
+            time.sleep(5)
 
-start = exchangeCode()
+exchangeCode()
