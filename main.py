@@ -1,7 +1,7 @@
 ##################################
-# GITHUB.COM/1337doener
+# GITHUB.COM/2e4
 ##################################
-# GITHUB.COM/1337doener/python-exchange_code-generator
+# GITHUB.COM/2e4/python-exchange_code-generator
 ##################################
 # IF YOU DONT MIND LEAVE A STAR ⭐
 ##################################
